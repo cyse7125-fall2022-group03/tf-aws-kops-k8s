@@ -62,3 +62,21 @@ resource "aws_s3_bucket_acl" "kops_bucket_acl" {
   bucket = aws_s3_bucket.kops_bucket.id
   acl    = "private"
 }
+
+
+resource "null_resource" "enable_service_usage_api" {
+  provisioner "local-exec" {
+    command =  " aws configure set aws_access_key_id ${aws_iam_access_key.kops_access_key.id} --profile kops"
+  }
+provisioner "local-exec" {
+    command =  " aws configure set aws_secret_access_key ${aws_iam_access_key.kops_access_key.secret} --profile kops"
+  }
+
+  provisioner "local-exec" {
+    command =  " aws configure set region us-east-1 --profile kops"
+  }
+provisioner "local-exec" {
+    command =  "export AWS_PROFILE=kops"
+  }
+
+}
