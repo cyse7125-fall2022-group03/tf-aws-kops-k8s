@@ -51,7 +51,7 @@ resource "aws_iam_user_policy_attachment" "kops-policy-amazonEventBridgeFullAcce
 
 resource "aws_s3_bucket" "kops_bucket" {
   bucket = var.s3_bucket_name
-
+  
   tags = {
     Name        = "kOps Bucket"
     Environment = "root"

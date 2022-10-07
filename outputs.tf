@@ -7,7 +7,8 @@ output "iam_access_key_id" {
   value       = aws_iam_access_key.kops_access_key.id
 }
 
-output "mysecret" {
+output "iam_access_secret" {
+  description = "The access key ID"
   value = nonsensitive(aws_iam_access_key.kops_access_key.secret)
 }
 
